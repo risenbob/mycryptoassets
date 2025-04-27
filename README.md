@@ -14,7 +14,7 @@ bundle exec rails db:migrate:queue
 
 start rails server
 
-bundle exec rails s
+`bundle exec rails s`
 
 start jobs
 
