@@ -1,13 +1,62 @@
 <div class="container">
   <div class="columns is-centered">
-    <div class="column is-half">
+    <div class="column">
       <div class="box">
         <h1 class="title is-3">Welcome to your Crypto App!</h1>
         <div>Welcome, <%= current_user.email %>!</div>
+        <div>Your common balance: <%= @common_balance %></div>
+
+        <% if @crypto_assets.exists? %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Currency</th>
+                <th>Quantity</th>
+                <th>USD quantity</th>
+                <th>Purchased market price</th>
+                <th>Current market price</th>
+                <th>Profit/Loss</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @crypto_assets.each do |asset| %>
+                <tr>
+                  <td>
+                    <%= asset.crypto_currency.name %>
+                  </td>
+                  <td>
+                    <%= asset.quantity %>
+                  </td>
+                  <td>
+                    <%= asset.quantity * asset.current_price %>
+                  </td>
+                  <td>
+                    <%= asset.initial_price %>
+                  </td>
+                  <td>
+                    <%= asset.current_price %>
+                  </td>
+                  <td>
+                    <%= (asset.initial_price / asset.current_price * 100).round(5) %>
+                  </td>
+                  <td>
+                    <%= link_to 'Edit', edit_crypto_asset_path(asset), class: 'btn btn-primary' %>
+                  </td>
+                  <td>
+                    <%= link_to 'Delete', crypto_asset_path(asset), data: { turbo_method: :delete }, class: 'btn btn-danger' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+
+        <%= link_to 'Add crypto asset', new_crypto_asset_path, class: 'btn btn-primary' %>
       </div>
 
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
-
     </div>
   </div>
 </div>

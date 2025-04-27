@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_27_153517) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_27_171455) do
   create_table "crypto_assets", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "crypto_currency_id", null: false
     t.decimal "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "initial_price"
     t.index ["crypto_currency_id"], name: "index_crypto_assets_on_crypto_currency_id"
     t.index ["user_id"], name: "index_crypto_assets_on_user_id"
   end

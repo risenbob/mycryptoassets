@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+install ruby
 
-Things you may want to cover:
+install latest ruby on rails
 
-* Ruby version
+`gem install rails --pre`
 
-* System dependencies
+```
+bundle exec rails db:create
+bundle exec rails db:migrate
+bundle exec rails db:migrate:queue
+```
 
-* Configuration
+start rails server
 
-* Database creation
+bundle exec rails s
 
-* Database initialization
+start jobs
 
-* How to run the test suite
+`bin/jobs`
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+open http://localhost:3000

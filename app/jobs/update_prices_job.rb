@@ -7,7 +7,7 @@ class UpdatePricesJob < ApplicationJob
     if new_prices.present?
       new_prices.each do |coin, price|
         price = price['usd']
-        currency = CryptoCurrency.find_by(name: coin)
+        currency = CryptoCurrency.find_by(name: coin.capitalize)
 
         next unless currency
 
@@ -16,6 +16,8 @@ class UpdatePricesJob < ApplicationJob
           currency.update!(crypto_price: crypto_price)
         end
       end
+
+      # broadcast changes for online users via action cable
     end
   end
 end
