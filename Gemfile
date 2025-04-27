@@ -28,7 +28,7 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
-
+gem 'httparty'
 gem "devise"
 
 # Reduces boot times through caching; required in config/boot.rb

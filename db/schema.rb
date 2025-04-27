@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_27_142429) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_27_153517) do
   create_table "crypto_assets", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "crypto_currency_id", null: false
@@ -26,6 +26,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_27_142429) do
     t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "crypto_price_id"
+  end
+
+  create_table "crypto_prices", force: :cascade do |t|
+    t.integer "crypto_currency_id", null: false
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_currency_id"], name: "index_crypto_prices_on_crypto_currency_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,4 +51,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_27_142429) do
 
   add_foreign_key "crypto_assets", "crypto_currencies"
   add_foreign_key "crypto_assets", "users"
+  add_foreign_key "crypto_prices", "crypto_currencies"
 end
