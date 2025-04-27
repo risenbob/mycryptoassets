@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-half">
+      <div class="box">
+        <h1 class="title is-3">Welcome to your Crypto App!</h1>
+        <div>Welcome, <%= current_user.email %>!</div>
+      </div>
+
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-danger' %>
+
+    </div>
+  </div>
+</div>
