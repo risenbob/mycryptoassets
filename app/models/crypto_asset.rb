@@ -1,0 +1,2 @@
+class CryptoAsset < ApplicationRecord
+end

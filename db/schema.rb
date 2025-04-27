@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_27_141903) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_27_142429) do
+  create_table "crypto_assets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "crypto_currency_id", null: false
+    t.decimal "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_currency_id"], name: "index_crypto_assets_on_crypto_currency_id"
+    t.index ["user_id"], name: "index_crypto_assets_on_user_id"
+  end
+
   create_table "crypto_currencies", force: :cascade do |t|
     t.string "name", null: false
     t.string "code", null: false
@@ -29,4 +39,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_27_141903) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "crypto_assets", "crypto_currencies"
+  add_foreign_key "crypto_assets", "users"
 end
