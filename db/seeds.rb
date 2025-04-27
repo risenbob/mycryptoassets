@@ -7,3 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if CryptoCurrency.count == 0
+  CryptoCurrency.create!(name: 'Bitcoin', code: 'BTC')
+  CryptoCurrency.create!(name: 'Ethereum', code: 'ETH')
+  CryptoCurrency.create!(name: 'Ripple', code: 'XRP')
+  CryptoCurrency.create!(name: 'Litecoin', code: 'LTC')
+end
