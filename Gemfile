@@ -65,6 +65,6 @@ group :test do
   gem "selenium-webdriver"
   gem 'rspec-rails', '~> 7.0.0'
   gem 'factory_bot_rails', '~> 6.0'
-  gem 'faker', '~> 2.0'
+  gem 'faker', '~> 3.5'
   gem 'database_cleaner-active_record', '~> 2.0'
 end
