@@ -7,6 +7,7 @@ class UpdatePricesJob < ApplicationJob
     if new_prices.present?
       new_prices.each do |coin, price|
         price = price['usd']
+
         currency = CryptoCurrency.find_by(name: coin.capitalize)
 
         next unless currency
