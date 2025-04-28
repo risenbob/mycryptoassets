@@ -34,9 +34,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   # Clean the database between tests using DatabaseCleaner
-  config.use_transactional_fixtures = false
-
-  config.use_transactional_fixtures = false  # Important to set to false if using database_cleaner
+  config.use_transactional_fixtures = true
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end

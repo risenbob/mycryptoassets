@@ -19,9 +19,9 @@ RSpec.describe UpdatePricesJob, type: :job do
 
   describe '#perform' do
     context 'when prices are returned successfully' do
-      it 'updates prices for the corresponding cryptocurrencies' do
-        crypto_currency = create(:crypto_currency, name: 'Bitcoin')
+      let!(:crypto_currency) { create(:crypto_currency, name: 'Bitcoin') }
 
+      it 'updates prices for the corresponding cryptocurrencies' do
         invoke_job
 
         crypto_price = crypto_currency.reload.crypto_price
