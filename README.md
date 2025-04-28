@@ -10,6 +10,7 @@ install latest ruby on rails
 bundle exec rails db:create
 bundle exec rails db:migrate
 bundle exec rails db:migrate:queue
+bundle exec rails db:seed
 ```
 
 start rails server
