@@ -18,6 +18,7 @@ class UpdatePricesJob < ApplicationJob
         end
       end
 
+      # on scale it should be broadcasted in separate jobs that bulk scheduled
       User.online.find_each do |user|
         rendered_html = ApplicationController.render(
           partial: 'home/player_crypto_assets_list',
