@@ -8,8 +8,6 @@ install latest ruby on rails
 
 ```
 bundle exec rails db:prepare
-bundle exec rails db:migrate:queue
-bundle exec rails db:migrate:cable
 bundle exec rails db:seed
 ```
 
