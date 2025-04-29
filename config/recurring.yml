@@ -10,4 +10,4 @@
 #     schedule: at 5am every day
 a_periodic_job:
   class: UpdatePricesJob
-  schedule: every second
+  schedule: every 10 second

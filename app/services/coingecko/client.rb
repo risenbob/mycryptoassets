@@ -12,7 +12,7 @@ class Coingecko::Client
     if response.success?
       response.parsed_response
     else
-      nil
+      response
     end
   end
 end

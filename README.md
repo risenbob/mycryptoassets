@@ -7,9 +7,9 @@ install latest ruby on rails
 `gem install rails --pre`
 
 ```
-bundle exec rails db:create
-bundle exec rails db:migrate
+bundle exec rails db:prepare
 bundle exec rails db:migrate:queue
+bundle exec rails db:migrate:cable
 bundle exec rails db:seed
 ```
 
@@ -21,4 +21,9 @@ start jobs
 
 `bin/jobs`
 
+run specs
+`bundle exec rspec spec`
+
 open http://localhost:3000
+
+Prices updates automatically every 10 seconds without page refresh

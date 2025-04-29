@@ -18,7 +18,21 @@ class UpdatePricesJob < ApplicationJob
         end
       end
 
-      # broadcast changes for online users via action cable
+      User.online.find_each do |user|
+        rendered_html = ApplicationController.render(
+          partial: 'home/player_crypto_assets_list',
+          locals: {
+            crypto_assets: user.crypto_assets.includes(crypto_currency: :crypto_price),
+            common_balance: user.common_balance
+          }
+        )
+
+        Turbo::StreamsChannel.broadcast_update_to(
+          "user_#{user.id}_crypto_assets",
+          target: 'player-crypto-assets',
+          html: rendered_html
+        )
+      end
     end
   end
 end

@@ -3,6 +3,6 @@ class HomeController < ApplicationController
 
   def index
     @crypto_assets = current_user.crypto_assets.includes(crypto_currency: :crypto_price)
-    @common_balance = @crypto_assets.map { |a| a.quantity * a.current_price }.sum
+    @common_balance = current_user.common_balance
   end
 end

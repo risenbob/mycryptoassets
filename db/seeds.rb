@@ -8,9 +8,13 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-if CryptoCurrency.count == 0
+if CryptoCurrency.count.zero?
   CryptoCurrency.create!(name: 'Bitcoin', code: 'BTC')
   CryptoCurrency.create!(name: 'Ethereum', code: 'ETH')
   CryptoCurrency.create!(name: 'Ripple', code: 'XRP')
   CryptoCurrency.create!(name: 'Litecoin', code: 'LTC')
+end
+
+if CryptoPrice.count.zero?
+  UpdatePricesJob.new.perform
 end
